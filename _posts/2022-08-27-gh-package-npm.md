@@ -224,19 +224,29 @@ $ git push
 
 > https://github.com/settings/tokens/new  
 > 이때 access 범위는 read package로 설정합니다.    
-> 추후 형상관리 될 토큰이므로 read-only 토큰으로 생성해야합니다.     
 
 ![](/assets/2022-08-21-gh-package-npm/github_access_key.png)
 
-✅ .npmrc 설정을 통해 생성한 토큰을 registry auth token 으로 설정합니다.        
+✅ 발급한 access-token을 환경변수로 선언합니다.     
 
+```shell
+$ echo "export GH_READ_PACK_TOKEN=<<some-token>>" >> ~/.zshrc
+```
+
+> 발급한 access-token은 github package에 존재하는 모든 public 패키지(다른 유저의 패키지 포함)에 접근이 가능합니다.       
+
+> ⚠️ 발급한 access-token 을 형상관리하는 경우(remote repo에 push하는 경우) 해당 토큰은 github 정책에 의해 삭제되므로 주의합니다.    
+
+✅ .npmrc 설정을 통해 생성한 토큰을 registry auth token 으로 설정합니다.        
 
 > .npmrc     
 
 ```diff   
-+ //npm.pkg.github.com/:_authToken={ACCESS_KEY}
++ //npm.pkg.github.com/:_authToken=${GH_READ_PACK_TOKEN}
 @{USER_NAME}:registry=https://npm.pkg.github.com
 ```
+
+
 
 ✅ 배포한 라이브러리를 다운로드 받을 수 있습니다.    
 
