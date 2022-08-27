@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: 관식이의 기술블로그 🙉
+title: ksyoo's Tech-Log 🙉
 email: ksyoo.career@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  문제의 본질에 집중하는 개발자, 관식이의 기술블로그입니다.
+  문제의 본질보다 앞선 기술이란 없다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
