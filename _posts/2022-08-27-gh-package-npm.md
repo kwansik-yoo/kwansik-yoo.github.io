@@ -36,9 +36,9 @@ tags: npm yarn github-package
 > {USER_NAME}로 표기된 부분은 본인의 github username으로 대체합니다.     
 
 ## 배포할 프로젝트 생성      
-1. 배포할 github repository를 생성합니다.       
+✅ 배포할 github repository를 생성합니다.       
 
-2. 배포할 프로젝트를 npm 프로젝트로 초기화 합니다.     
+✅ 배포할 프로젝트를 npm 프로젝트로 초기화 합니다.     
 ```shell
 $ git clone git@github.com:{USER_NAME}/github-package-npm-demo.git
 $ cd github-package-npm-demo   
@@ -50,7 +50,7 @@ $ git commit -m "init npm"
 $ git push
 ```   
 
-3. 라이브러리에서 제공할 간단할 모듈을 추가합니다.     
+✅ 라이브러리에서 제공할 간단할 모듈을 추가합니다.     
 ```shell
 $ touch index.js    
 ```
@@ -69,7 +69,7 @@ $ git push
 
 ## 배포 설정을 위한 npm 설정    
 
-1. ```package.json```을 다음과 같이 수정합니다.   
+✅ ```package.json```을 다음과 같이 수정합니다.   
 
 ```diff
 {
@@ -92,12 +92,12 @@ $ git commit -m "[npm configuration] package.json"
 $ git push
 ```
 
-2. 프로젝트 루트에 .npmrc 파일을 추가합니다.    
+✅ 프로젝트 루트에 .npmrc 파일을 추가합니다.    
 ```shell  
 $ touch .npmrc
 ```
 
-3. @{USER_NAME} scope 에 해당하는 모듈에 대한 registry 정보를 서술합니다.
+✅ @{USER_NAME} scope 에 해당하는 모듈에 대한 registry 정보를 서술합니다.
 
 > .npmrc     
 
@@ -114,16 +114,17 @@ $ git push
 
 ## github action 정의    
 
-1. github action을 서술할 파일을 생성합니다.    
+✅ github action을 서술할 파일을 생성합니다.    
 
 ```shell
 $ mkdir -p .github/workflows       
 $ touch .github/workflows/release.yml       
 ```
 
-2. 수행할 action을 명세합니다.  
+✅ 수행할 action을 명세합니다.  
 
-> release.yml    
+> release.yml      
+
 ```yml
 name: Release
 
@@ -173,23 +174,23 @@ $ git push
 
 ## 릴리즈     
 
-1. release 브랜치를 생성하고 코드를 푸시합니다.     
+✅ release 브랜치를 생성하고 코드를 푸시합니다.     
 ```shell
 $ git checkout -b release
 $ git push -u origin release
 ```
 
-2. action이 수행되는 것을 확인할 수 있습니다.    
+✅ action이 수행되는 것을 확인할 수 있습니다.    
 
 ![](/assets/2022-08-21-gh-package-npm/github-action.png)
 
-3. packages 메뉴를 통해 배포된 패키지를 확인할 수 있습니다.    
+✅ packages 메뉴를 통해 배포된 패키지를 확인할 수 있습니다.    
 
 ![](/assets/2022-08-21-gh-package-npm/github-package.png)
 
 ## yarn     
 
-1. github actions 수정    
+✅ github actions 수정    
 ```diff 
 // 생략
 -      - run: npm ci
@@ -203,7 +204,7 @@ $ git push -u origin release
 +      - run: yarn publish
 ```
 
-2. 버전 업그레이드 (patch)    
+✅ 버전 업그레이드 (patch)    
 > package.json     
 ```diff
 - "version": "1.0.0",
@@ -219,7 +220,7 @@ $ git push
 
 ## 배포된 라이브러리 사용하기     
 
-1. package에 접근할 github access-key를 생성합니다.    
+✅ package에 접근할 github access-key를 생성합니다.    
 
 > https://github.com/settings/tokens/new  
 > 이때 access 범위는 read package로 설정합니다.    
@@ -227,7 +228,7 @@ $ git push
 
 ![](/assets/2022-08-21-gh-package-npm/github_access_key.png)
 
-2. .npmrc 설정을 통해 생성한 토큰을 registry auth token 으로 설정합니다.        
+✅ .npmrc 설정을 통해 생성한 토큰을 registry auth token 으로 설정합니다.        
 
 
 > .npmrc     
@@ -237,9 +238,9 @@ $ git push
 @{USER_NAME}:registry=https://npm.pkg.github.com
 ```
 
-3. 배포한 라이브러리를 다운로드 받을 수 있습니다.    
+✅ 배포한 라이브러리를 다운로드 받을 수 있습니다.    
 
-```
-yarn add -D @{USER_NAME}/github-package-npm-demo
+```shell
+$ yarn add -D @{USER_NAME}/github-package-npm-demo
 ```    
 
