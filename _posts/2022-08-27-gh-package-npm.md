@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Github Package를 통해 private Repository 구성하기"
-date:   2022-08-21 13:21:43 +0900
+date:   2022-08-27 15:14:00 +0900
 tags: npm yarn github-package
 ---
 > ```npm``` ```yarn``` ```github-package```    
@@ -18,7 +18,7 @@ tags: npm yarn github-package
 - [github action 정의](#github-action-정의)
 - [릴리즈](#릴리즈)
 - [yarn](#yarn)
-- [자동 버저닝](#자동-버저닝)
+- [배포된 라이브러리 사용하기](#배포된-라이브러리-사용하기)
 
 ## Intro    
 다양한 javascript 라이브러리를 관리하기 위해서는 npm repository가 필요합니다.    
@@ -189,6 +189,57 @@ $ git push -u origin release
 
 ## yarn     
 
-## 자동 버저닝     
-    
+1. github actions 수정    
+```diff 
+// 생략
+-      - run: npm ci
++      - run: yarn
+-      - run: npm test
++      - run: yarn test
+// 생략
+-      - run: npm ci
++      - run: yarn
+-      - run: npm publish
++      - run: yarn publish
+```
+
+2. 버전 업그레이드 (patch)    
+> package.json     
+```diff
+- "version": "1.0.0",
++ "version": "1.0.1",
+```
+
+```shell
+// push to remote git     
+$ git add .
+$ git commit -m "apply yarn"
+$ git push
+```
+
+## 배포된 라이브러리 사용하기     
+
+1. package에 접근할 github access-key를 생성합니다.    
+
+> https://github.com/settings/tokens/new  
+> 이때 access 범위는 read package로 설정합니다.    
+> 추후 형상관리 될 토큰이므로 read-only 토큰으로 생성해야합니다.     
+
+![](/assets/2022-08-21-gh-package-npm/github_access_key.png)
+
+2. .npmrc 설정을 통해 생성한 토큰을 registry auth token 으로 설정합니다.        
+
+
+> .npmrc     
+
+```diff   
++ //npm.pkg.github.com/:_authToken={ACCESS_KEY}
+@{USER_NAME}:registry=https://npm.pkg.github.com
+```
+
+3. 배포한 라이브러리를 다운로드 받을 수 있습니다.    
+
+```
+yarn add -D @{USER_NAME}/github-package-npm-demo
+```    
 
