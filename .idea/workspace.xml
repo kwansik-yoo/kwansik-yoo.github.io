@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60383f37-1eea-4e1a-bb7c-2424d8f045c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2022-11-28-reduce-npm-build-time.md" afterDir="false" />
-    </list>
+    <list default="true" id="60383f37-1eea-4e1a-bb7c-2424d8f045c8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +26,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/_posts" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -43,7 +42,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661578428555</updated>
       <workItem from="1661578430474" duration="14000" />
-      <workItem from="1669619522894" duration="279000" />
+      <workItem from="1669619522894" duration="511000" />
     </task>
     <servers />
   </component>
